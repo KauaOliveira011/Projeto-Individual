@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgba(0, 0, 0, 0.986);
+  background-color: rgba(110, 209, 248, 0.986);
 }
 
 .container {
@@ -14,7 +14,7 @@ body {
 }
 
 .header {
-  border-bottom: 3px solid #500606b0;
+  border-bottom: 3px solid #ffffffb0;
 }
 
 .header .container {
@@ -23,7 +23,7 @@ body {
 
 .header a {
   text-decoration: none;
-  color: #8d1111;
+  color: #ffffff;
   font-style: oblique;
 }
 
@@ -37,12 +37,12 @@ body {
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  color: #8d1111;
+  color: #ffffff;
 }
 
 
 .titulo {
-  color: #8d1111;
+  color: #ffffff;
   width: fit-content;
   font-weight: 500;
 }
@@ -58,23 +58,25 @@ body {
 }
 .banner {
   height: fit-content;
-  padding: 60px 0;
+  padding: 60px;
   color: black; 
-  background-image: url(".././assets/imgs/wall-arnold.jpg");
+  background-image: url(".././assets/imgs/cbumG.gif");
   background-size: cover;
-  border-bottom: 3px solid #500606b0;
+  border-bottom: 3px solid #ffffffb0;
   height: 500px;
 }
 
-.banner .container {
-  height: 90px;
-  font-size: 50px;
+.banner .container1 {
+  border-style:dashed;
+  height: 80px;
+  font-size: 60px;
   font-style: italic;
   display: flex;
-  justify-content:left;
-  align-items:flex-start;
-  background-color: #0c070793;
+  justify-content: space-around;
+  align-items:center;
+  background-color: #00000093;
   border-radius: 15px;
+  
 }
 
 
@@ -94,8 +96,70 @@ body {
   font-weight: 800;
 }
 
-/* missao visao valores */
+.d1{
+  height: fit-content;
+  background-image: url(".././assets/imgs/fitness1.jpg");
+  background-size: cover;
+  border-bottom: 3px solid #ffffffb0;
+  height: 500px;
+}
+.d1d1{
+  width: 1100px;
+  margin-left: 12%;
+  border-style:groove;
+  font-style: italic;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  background-color: #ffffff81;
+  border-radius: 30px;
+}
 
+.d1d2{
+  width: 500px;
+  margin-left: 10%;
+  font-style: italic;
+  font-size: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items:center;
+  background-color: #ffffff81;
+  border-radius: 30px;
+
+}
+.d1d3{
+  width: 500px;
+  margin-left: 800px;
+  font-style: italic;
+  font-size: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items:center;
+  background-color: #ffffff81;
+  border-radius: 30px;
+
+}
+
+.d1d4{
+  width: 500px;
+  margin-left: 10%;
+  font-style: italic;
+  font-size: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items:center;
+  background-color: #ffffff81;
+  border-radius: 15px;
+
+}
+
+/* missao visao valores */
+.boxes{
+
+  display: flex;
+  flex-direction: column;
+}
 .social {
   background-color: #66515133;
   display: flex;
