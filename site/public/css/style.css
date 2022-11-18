@@ -186,8 +186,8 @@ body {
 }
 
 .box img {
-  width: 210px;
-  height: 190px;
+  width: 230px;
+  height: 230px;
 }
 
 .social .container .boxes {
@@ -238,15 +238,25 @@ body {
 
 /* LOGIN */
 
+.banner{
+
+  background-image: url(../assets/imgs/login.jpg);
+  background-size: 1000px;
+
+}
 .banner .container .card {
-  background-color: #e5e5e5;
+  background-color:  rgba(48, 189, 245, 0.63);
   height: fit-content;
   width: 400px;
+  height: 300px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   display: flex;
-  flex-direction: column;
-  color: palevioletred;
+  margin-left: 30%;
+  flex-direction:column-reverse;
+  color: rgba(255, 255, 255, 0.959);
   align-items: center;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 .card {
