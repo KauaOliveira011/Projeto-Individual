@@ -63,21 +63,23 @@ body {
   box-shadow: #1b93a8;
 }
 
-.banner .container1 {
-  border-style:dashed;
-  height: 80px;
-  font-size: 60px;
+.container1{
+  position: absolute;
+  left: 300px;
+  top: 200px;
+}
+.txt11{
+  
   font-style: italic;
   display: flex;
-  justify-content: space-around;
-  align-items:center;
-  background-color: #00000093;
-  border-radius: 15px;
+  justify-content: space-around;  
   
 }
-.banner .video{
 
+.banner .video{
+  height: 100%;
   width: 100%;
+  
   
 }
 
@@ -238,13 +240,13 @@ body {
 
 /* LOGIN */
 
-.banner{
+.bannerL{
 
   background-image: url(../assets/imgs/login.jpg);
   background-size: 1000px;
 
 }
-.banner .container .card {
+.bannerL .container .card {
   background-color:  rgba(48, 189, 245, 0.63);
   height: fit-content;
   width: 400px;
@@ -276,12 +278,32 @@ body {
   margin-top: 15px;
 }
 
+
 button {
   cursor: pointer;
 }
 
 /* FORMULARIO */
 
+.bannerC{
+
+  background-image: url(../assets/imgs/login.jpg);
+  background-size: 1200px;
+  height: 800px;
+
+}
+.bannerC .container .card {
+  background-color:  rgba(48, 189, 245, 0.63);
+  height: fit-content;
+  padding: 80px;
+  
+  display: flex;
+  margin-left: 30%;
+  flex-direction:column-reverse;
+  color: rgba(255, 255, 255, 0.959);
+  align-items: center;
+  border-radius: 10px;
+}
 .alerta_erro{
   display: flex;
   justify-content: flex-end;
