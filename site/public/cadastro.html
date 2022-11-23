@@ -68,10 +68,10 @@
                     <input id="nome_input" type="text" placeholder="Seu nome">
 
                     <span class="tipo_campo">Idade:</span>
-                    <input id="nome_input" type="text" placeholder="Sua idade">
+                    <input id="idade_input" type="text" placeholder="Sua idade">
 
                     <span class="tipo_campo">Objetivo:</span>
-                    <input id="nome_input" type="text" placeholder="">
+                    <input id="objetivo_input" type="text" placeholder="O seu objetivo!">
                     
                     <span class="tipo_campo">E-mail:</span>
                     <input id="email_input" type="text" placeholder="meuemail@provedor.com">
@@ -124,8 +124,14 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        var idadeVar = idade_input.value;
+        var objetivoVar = objetivo_input.value;
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        
+        if(senhaVar != confirmacaoSenhaVar){
+            alert("Sua senha e confirmação de senha não estão iguais.")
+        }
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || idadeVar == "" || objetivoVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
@@ -147,7 +153,9 @@
                 // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+                idadeServer: idadeVar,
+                objetivoServer: objetivoVar
             })
         }).then(function (resposta) {
 

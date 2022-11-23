@@ -65,14 +65,45 @@ body {
 
 .container1{
   position: absolute;
-  left: 300px;
-  top: 200px;
+  display: flex;
+  left: 100px;
+  top: 100px;
 }
-.txt11{
+.txt1{
+  font-style: italic;
+  display: flex;
+  justify-content: flex-start;  
+  
+}
+
+.container2{
+  position: absolute;
+  display: flex;
+  left: 500px;
+  top: 300px;
+
+}
+
+.txt2{
   
   font-style: italic;
   display: flex;
-  justify-content: space-around;  
+  justify-content: flex-start;  
+  
+}
+
+.container3{
+  position: absolute;
+  display: flex;
+  left: 980px;
+  top: 400px;
+}
+
+.txt3{
+  
+  font-style: italic;
+  display: flex;
+  justify-content: flex-start;  
   
 }
 
