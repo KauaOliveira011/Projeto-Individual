@@ -6,18 +6,20 @@
 comandos para mysql - banco local - ambiente de desenvolvimento
 */
 
-CREATE DATABASE aquatech;
+CREATE DATABASE inshape;
 
-USE aquatech;
+USE inshape;
 
 CREATE TABLE usuario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(50),
 	email VARCHAR(50),
-	senha VARCHAR(50)
+	senha VARCHAR(50),
+	idade VARCHAR(3),
+	objetivo VARCHAR(50)
 );
 
-CREATE TABLE aviso (
+CREATE TABLE forum	(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	titulo VARCHAR(100),
 	descricao VARCHAR(150),

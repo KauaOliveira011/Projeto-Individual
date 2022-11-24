@@ -43,28 +43,14 @@
 
     <!-- simulador inicio -->
     <div class="simulador">
-        <div class="container">
-            <h2>Simulador</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
+        <div class="containerPRO" >
+            <h4 class="int" style="color: black;">"Após grandes estudos, entendemos que a grande aliada na construção dos tecidos musculares é a <b>Proteína</b>, ela é a principal agente quando se trata de anabolização do musculo catabolizado."</h4> <br><br>
+            <h2 class="int2" style="color: black;">Calcule quantas gramas de proteína devem ser ingeridas por você, por dia. É rápido e simples!</h2> <br>
+            
+            <h2 class="int3" style="color: black;">Informe seu peso: <br><br><input type="text" id="pes">
+            <button class= "button1" onclick="cal()">Calcular</button></h2>
+            
+            <h3 class="int4 " style="color: black;">O seu resultado irá aparecer aqui:</h3><div class="result1" id="d1"></div>
 
         </div>
     </div>
@@ -87,3 +73,12 @@
 </body>
 
 </html>
+<script>
+
+    function cal(){
+        var peso = Number(pes.value)
+        var result = peso*0.80
+
+        d1.innerHTML = `<b> Em termos gerais, a recomendação da Organização Mundial da Saúde é de 0,8 gramas por kg de peso. <br> Logo, sua injecção de proteína por dia deve ser cerca de ${result.toFixed(2)}<b>`
+    }
+</script>
