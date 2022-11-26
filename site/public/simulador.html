@@ -28,7 +28,7 @@
                 <li>
                     <a href="./index.html">Inicial</a>
                 </li>
-                <li class="agora">Simulador</li>
+                <li class="agora">DietControl</li>
                 <li>|</li>
                 <li>
                     <a href="./login.html">Login</a>
@@ -51,6 +51,23 @@
             <button class= "button1" onclick="cal()">Calcular</button></h2>
             
             <h3 class="int4 " style="color: black;">O seu resultado irá aparecer aqui:</h3><div class="result1" id="d1"></div>
+
+        </div>
+        <div class="containerCARB">
+            <h4 class="int" style="color: black;">"O consumo de <b>carboidratos</b> é muito importante quando falamos de dieta, através de uma determinada dieta é possivel reduzir ou aumentar sua massa corporal de acordo com seu objetivo. "</h4> <br><br>
+            <h2 class="int2" style="color: black;">Calcule quantas gramas de carboidratos devem ser ingeridas por você ao dia, de acordo com seu objetivo. É rápido e simples!</h2> <br>
+
+            <h2 class="int3" style="color: black;">Informe seu peso(redução de peso): <br><br><input type="text" id="pes2">
+
+             <button onclick="cal2()" class="button1">Calcular calorias</button>
+
+            <h2 class="int3" style="color: black;">Informe seu peso(ganho de peso): <br><br><input type="text" id="pes3">
+                        
+            <button onclick="cal3()" class="button1">Calcular calorias</button>
+                        
+            <h3 class="int4 " style="color: black;">Sua injeção de carboidratos deverá ser de:</h3><div class="result1" id="d2"></div>
+            
+           
 
         </div>
     </div>
@@ -76,9 +93,26 @@
 <script>
 
     function cal(){
-        var peso = Number(pes.value)
-        var result = peso*0.80
 
-        d1.innerHTML = `<b> Em termos gerais, a recomendação da Organização Mundial da Saúde é de 0,8 gramas por kg de peso. <br> Logo, sua injecção de proteína por dia deve ser cerca de ${result.toFixed(2)}<b>`
+        d1.innerHTML = ""
+        var peso = Number(pes.value)
+        var result = peso*2
+
+        d1.innerHTML = `<b> Em termos gerais, a recomendação da Organização Mundial da Saúde é de 2 gramas por kg de peso. <br> Logo, sua injecção de proteína por dia deve ser cerca de ${result.toFixed(2)}g.<b>`
     }
+    function cal2(){
+        d2.innerHTML = ""
+        var peso = Number(pes2.value)
+        var result = ((peso*4)*2)+ ((peso*2)*4) + ((peso*1)*9) 
+
+        d2.innerHTML = `<b> ${result.toFixed(2)} POR DIA<b>`
+    }
+    function cal3(){
+        d2.innerHTML = ""
+        var peso = Number(pes3.value)
+        var result = ((peso*4)*4)+ ((peso*2)*4) + ((peso*1)*9)
+
+        d2.innerHTML = `<b> ${result.toFixed(2)} POR DIA <b>`
+    }
+
 </script>

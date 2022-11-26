@@ -267,6 +267,12 @@ body {
   box-shadow: 0 1px 10px 13px rgb(33, 136, 177);
   background-image: url("../assets/imgs/calc1.png");
 }
+.containerCARB{
+  padding: 70px;
+  box-shadow: 0 1px 10px 13px rgb(33, 136, 177);
+  background-image: url("../assets/imgs/calc2.png");
+  background-size: 1800px;
+}
 .int{
   font-style: italic;
   align-items: center;
@@ -299,6 +305,17 @@ body {
   justify-content: center;
 }
 .simulador .containerPRO .button1 {
+  margin-top: 20px;
+  width: 120px;
+  color: #ffffff;
+  background-color: rgb(33, 136, 177);
+  padding: 10px 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.simulador .containerCARB .button1 {
   margin-top: 20px;
   width: 120px;
   color: #ffffff;
