@@ -27,7 +27,7 @@
 <body onload=" atualizarFeed()">
 
     <div class="janela">
-        <div class="header-left">
+        <div class="header-left2">
             <h1>in<b><i>Shape</i></b></h1>
 
             <div class="hello">
@@ -42,7 +42,7 @@
 
             <div class="btn-nav">
 
-                <h3>Controle de frequência</h3>
+                <h3>Treinos</h3>
 
             </div>
 
@@ -58,199 +58,142 @@
 
         </div>
 
-        <div class="dash">
-            <div class="btns-dash">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-                <button class="btn-chart btn-pink" onclick="obterDadosGrafico(1)">Aquario 1</button>
-                <button class="btn-chart btn-white" onclick="obterDadosGrafico(2)">Aquario 2</button>
-                <button class="btn-chart btn-white" onclick="obterDadosGrafico(3)">Aquario 3</button>
-                <button class="btn-chart btn-white" onclick="obterDadosGrafico(4)">Aquario 4</button>
-            </div>
-            <div>
-                <h3 class="tituloGraficos">
-                    <span id="tituloAquario">123</span>
-                </h3>
-            </div>
-            <div class="graph">
-                <canvas id="myChart"></canvas>
-            </div>
-            <div class="avisoCaptura">
-                <p id="avisoCaptura" style="color: white"></p>
-            </div>
+        <div class="containerTRE">
+
+           <h2>Estabeleça sua rotina semanal de treino:</h2>  <br> <select id= "c1" onchange="calcc()" class="combo1">
+                <option value="">-----</option>
+                <option value="1">1 por 1(Iniciante)</option>
+                <option value="2">2 por 1(Intermediario)</option>
+                <option value="3">3 por 1(Avançado)</option>
+            </select> <br>
+            <div id="d1" class="resultTRE1"></div>
+            <h2>Registro de treinos:</h2>
+                Tipo do treino:
+                <br><input type="text" id="trei"><br>
+                Dia do treino:
+                <br><input type="text" id="diaa"><br>
+                <button onclick="calcc2()" class="button1">Cadastrar treino e dia</button>
+                <button onclick="calcc3()" class="button1">Exibir Dados</button>
+                <div id="d2"></div>
+        </div> 
+        <div class="resultTRE2">
+            <h2>Bases de treino</h2>
+            Selecione o tipo de treino: <br>
+            <select id="c2" onchange="calcc4()" class="combo1">
+
+            <option value="">-----</option>
+            <option value="p">Peitoral</option>
+            <option value="c">Costas</option>
+            <option value="b">Bíceps</option>
+            <option value="t">Tríceps</option>
+            <option value="o">Ombro</option>
+            <option value="per">Perna</option>
+
+        </select>
+        <br><br>
+        <div id="d3"></div>
         </div>
-    </div>
-
-
+        <br>
+        
 </body>
 
 </html>
 
-<script>
-    
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    
-    let proximaAtualizacao;
-        
-    window.onload = obterDadosGrafico(1);
+<script>    
 
-    verificar_autenticacao();
+function calcc(){
 
-    function alterarTitulo(idAquario) {
-        var tituloAquario = document.getElementById("tituloAquario")
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idAquario + "</span>"
-    }
+var contar = 1
+var combo = c1.value
+d1.innerHTML = ""
 
-    // O gráfico é construído com três funções:
-    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+while(contar<= 7){
+    contar++
+    if(combo == 1){
+        if(contar %2 == 1 ){
+            d1.innerHTML += `${contar-1}° dia - Day Off(Descanso)<br>`
 
-    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idAquario) {
-        alterarTitulo(idAquario)
-
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
         }
-
-        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-
-                    plotarGrafico(resposta, idAquario);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
+            else{
+                d1.innerHTML += `${contar-1}° dia - Treino <br>`
     }
+}
+if(combo == 2){
+        if(contar %3 == 1 ){
+            d1.innerHTML += `${contar-1}° dia - Day Off(Descanso)<br>`
 
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idAquario) {
-        console.log('iniciando plotagem do gráfico...');
-
-        // Criando estrutura para plotar gráfico - labels
-        let labels = [];
-        
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: labels,
-            datasets: [{
-                label: 'Umidade',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            },
-            {
-                label: 'Temperatura',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(199, 52, 52)',
-                tension: 0.1
-            }]
-        };
-        
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
-        
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
         }
-        
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
-        
-        // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'line',
-            data: dados,
-        };
+            else{
+                d1.innerHTML += `${contar-1}° dia - Treino <br>`
+    }
+}
+if(combo == 3){
+        if(contar %4 == 1 ){
+            d1.innerHTML += `${contar-1}° dia - Day Off(Descanso)<br>`
 
-        // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
+        }
+            else{
+                d1.innerHTML += `${contar-1}° dia - Treino <br>`
+    }
+}
 
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+}
+
+}
+
+    var treinoo = []
+
+    function calcc2() {
+    
+        var treino1 = {
+            nome: trei.value, 
+            telefone: diaa.value
+        }
+        treinoo.push(treino1)
     }
 
+    function calcc3() {
+        d2.innerHTML = "";
 
-    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-    // buscando a última medida inserida em tabela contendo as capturas, 
+        for (var i = 0; i < treinoo.length; i++) {  
 
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idAquario, dados, myChart) {
+            var atual = treinoo[i]; 
 
-        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
-
-                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
-                    console.log(dados);
-
-                    document.getElementById("avisoCaptura").innerHTML = ""
-
-                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        document.getElementById("avisoCaptura").innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].momento_grafico)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
-                    } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
-                        myChart.update();
-                    }
-
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
+            d2.innerHTML += `
+                Tipo: ${atual.nome} <br> 
+                Dia da semana: ${atual.telefone}<br><br>
+            `
+        }
     }
+    
+    function calcc4(){
+        d3.innerHTML = ""
+        var combo2 = c2.value
+
+        if(combo2 == "p"){
+
+            d3.innerHTML = ` Supino reto: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/supino-reto.gif" height="150px"> <br> Supino inclinado: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/supino-inclinado-com-barra.gif" height="150px"> <br> Crucifixo: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/voador-no-aparelho.gif" height="150px"> <br> Crucifixo horizontal: <br> <img src="https://static.wixstatic.com/media/2edbed_14bbc7dcb5ff4effa21b3d851c0094aa~mv2.gif" height="150px"> <br>PullOver<br> <img src="https://static.wixstatic.com/media/2edbed_59d0dfae6a894948ab4327f90138a533~mv2.gif" height="150px">`
+        }
+        else if(combo2 == "c"){
+
+            d3.innerHTML = `Puxada aberta: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/costas-puxada-aberta-com-barra-no-pulley-1.gif" height="150px"> <br> Puxada com triangulo: <br><img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/costas-puxada-para-frente-no-pulley-com-triangulo.gif" height="150px"> <br> Remada baixa:<br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2021/09/remada-sentado-com-cabos-e-triangulo-para-costas.gif" height="150px"> <br> Barra fixa: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/costas-barra-fixa-pegada-aberta-palma-para-frente-chinup.gif" height="150px">`
+        }
+        else if(combo2 == "b"){
+
+        d3.innerHTML = `Bíceps na barra W: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/rosca-biceps-direta-na-barra-ez.gif" height="150px"> <br> Bíceps unilateral em apoio: <br><img src="https://i.pinimg.com/originals/c7/a5/9c/c7a59c7fc471066f2a1fea5da7a78e0d.gif" height="150px"> <br>Bíceps scott com barra: <br> <img src="https://i.pinimg.com/originals/a4/d8/80/a4d88024911534dc6669fcc5a416cc0d.gif" height="150px">`
+        }
+        else if(combo2 == "t"){
+
+        d3.innerHTML = `Puxada no pulley: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2021/07/triceps-puxada-no-pulley.gif" height="150px"> <br> Tríceps no banco: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2021/04/triceps-no-banco.gif" height="150px"> <br> Tríceps "Francês": <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2021/07/triceps-nuca-com-halter.gif" height="150px"> `
+        }
+        else if(combo2 == "o"){
+
+        d3.innerHTML = `Desenvolvimento (halteres): <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/desenvolvimento-para-ombros-com-halteres.gif" height="150px"> <br> Elevação lateral: <br><img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/ombros-elevacao-lateral-de-ombros-com-halteres.gif" height="150px"> <br> Crucifixo invertido: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/ombros-crucifixo-invertido-com-halteres.gif" height="150px"> <br> Desenvolvimento frontal: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/ombros-desenvolvimento-de-ombros-frontal-com-barra.gif" height="150px">`
+        }
+        else if(combo2 == "per"){
+
+        d3.innerHTML = `Agachamento: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/11/agachamento-com-barra.gif" height="150px"> <br> Agachamento unilateral: <br> <img src="https://static.wixstatic.com/media/2edbed_6cadd8234a53401ba456512ca2c37774~mv2.gif" height="150px"> <br> Step unilateral: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2020/11/step-up-com-halteres.gif" height="150px"> <br> Cadeira extensora: <br><img src="https://www.mundoboaforma.com.br/wp-content/uploads/2021/04/pernas-extensao-de-pernas-na-maquina.gif" height="150px"> <br> Flexão de pernas: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2021/04/pernas-flexao-de-pernas-na-maquina.gif" height="150px"> <br> Adução de pernas: <br> <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2021/04/pernas-aducao-de-pernas-na-maquina.gif" height="150px">`
+        }
+    }
+
 </script>
