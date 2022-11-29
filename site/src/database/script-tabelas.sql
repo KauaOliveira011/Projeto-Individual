@@ -6,7 +6,7 @@
 comandos para mysql - banco local - ambiente de desenvolvimento
 */
 
-CREATE DATABASE inshape;
+DATABASE inshape;
 
 USE inshape;
 
@@ -28,7 +28,7 @@ CREATE TABLE forum	(
 );
 
 create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
+/* em nossa regra de negócio, um aquaCREATErio tem apenas um sensor */
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	descricao VARCHAR(300)
 );

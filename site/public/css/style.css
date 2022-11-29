@@ -353,7 +353,22 @@ body {
   display: flex;
   justify-content: space-around;
 }
+.bannerL .container .card2{
+  background-color:  rgba(48, 189, 245, 0.63);
+  padding: 20px;
+  width: 400px;
+  height: 270px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  margin-left: 30%;
+  flex-direction:column;
+  color: rgba(255, 255, 255, 0.959);
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
 
+}
 .card h2 {
   font-size: 30px;
 }
@@ -364,6 +379,11 @@ body {
 
 .banner #div_erros_login {
   margin-top: 15px;
+}
+.contt{
+  font-style: italic;
+  color: #000000;
+
 }
 
 
@@ -382,9 +402,9 @@ button {
 }
 .bannerC .container .card {
   background-color:  rgba(48, 189, 245, 0.63);
-  height: fit-content;
+  height: 500px;
   padding: 80px;
-  margin-top: 25px;
+  margin-top: 55px;
   display: flex;
   margin-left: 30%;
   flex-direction:column-reverse;

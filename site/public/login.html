@@ -77,6 +77,15 @@
 
                 </div>
             </div>
+            <div class="container">
+                <div class="card2">
+
+                   <b>Usuários em objetivo para ganho de massa: <b><span id="b_contmassa" class="contt">0</span></b> <br> <br>
+                   <b>Usuários em objetivo para emagrecer: <b><span id="b_contemagrecer" class="contt">0</span></b> <br> <br> 
+                   <b>Usuários em objetivo para manter massa: <b><span id="b_contmanter" class="contt">0</span></b> <br> <br>
+                    <b>Quantos usuarios estão dentro do projeto <b>in<i>SHAPE</i></b>: <b><span id="b_contador" class="contt">0</span></b> 
+                </div>
+            </div>
         </div>
     </div>
 
@@ -99,7 +108,10 @@
 
 <script>
 
-
+    window.onload = puxar1(),
+    window.onload= puxar2(),
+    window.onload = puxar3(),
+    window.onload = puxar4()
     function entrar() {
         aguardar();
 
@@ -168,5 +180,87 @@
     function sumirMensagem() {
         cardErro.style.display = "none"
     }
+
+   function puxar1(){ 
+    b_contador.innerHTML = sessionStorage.CONTADOR_USUARIOS
+
+        fetch(`/usuarios/puxar1`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    var json = JSON.stringify(resposta);
+                    console.log(resposta[0].contador);
+                    sessionStorage.CONTADOR_USUARIOS = resposta[0].contador
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+    function puxar2(){ 
+    b_contmassa.innerHTML = sessionStorage.CONTADOR_USUARIOS2
+
+        fetch(`/usuarios/puxar2`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    var json = JSON.stringify(resposta);
+                    console.log(resposta[0].contmassa);
+                    sessionStorage.CONTADOR_USUARIOS2 = resposta[0].contmassa
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+    function puxar3(){ 
+    b_contemagrecer.innerHTML = sessionStorage.CONTADOR_USUARIOS3
+
+        fetch(`/usuarios/puxar3`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    var json = JSON.stringify(resposta);
+                    console.log(resposta[0].contemagrecer);
+                    sessionStorage.CONTADOR_USUARIOS3 = resposta[0].contemagrecer
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+    function puxar4(){ 
+    b_contmanter.innerHTML = sessionStorage.CONTADOR_USUARIOS4
+
+        fetch(`/usuarios/puxar4`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    var json = JSON.stringify(resposta);
+                    console.log(resposta[0].contmanter);
+                    sessionStorage.CONTADOR_USUARIOS4 = resposta[0].contmanter
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
 
 </script>
